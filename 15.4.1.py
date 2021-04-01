@@ -8,11 +8,11 @@ def change_text(text):
     return text.split()
 
 
-#  Выдаёт только слова длиннее 3-х симвлолов:
+#  Выдаёт только слова длиннее 3-х символов и самые часто повторяемые:
 def long_enough(text):
     list_of_words_long_enough = []  # пустой список, куда будем скаладывать слова, длиннее 3-х букв
     frequency_of_copies = {}  # пустой словарь для складывания пар "слово": количество упоминаний
-    for item in text.split():
+    for item in change_text(text):
         if len(item) >= 3:
             list_of_words_long_enough.append(item)  # перебираем слова, складываем те, которые длинее 3-х букв в список
     for item in list_of_words_long_enough:
@@ -27,7 +27,7 @@ def long_enough(text):
 def english_words(text):
     list_of_english_words = []  # пустой список, куда будут добавляться англ. слова
     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    for item in text.split():  # работает, но не совсем так: добавляет слово столько раз, сколько в нём англ. букв
+    for item in change_text(text):  # работает, но не совсем так: добавляет слово столько раз, сколько в нём англ. букв
         for char in item:
             if char in alphabet:
                 list_of_english_words.append(item)
@@ -35,7 +35,6 @@ def english_words(text):
     return list_max
 
 
-print(change_text(text))
 print(long_enough(text))
 print("The longest english word is", english_words(text))
 
